@@ -1,0 +1,12 @@
+.search-result li a {
+  color: rgb(255, 255, 255);
+  display: block;
+  text-decoration: none;
+}
+
+.search-result li a:hover {
+  color: white;
+}
+.search-result li a:active {
+  color: white;
+}

@@ -1,0 +1,9 @@
+.todo {
+  color: #fff;
+  background-color: #607d8b;
+  border-color: #607d8b;
+  width: 100%;
+}
+.todo:hover {
+  filter: invert(8%);
+}

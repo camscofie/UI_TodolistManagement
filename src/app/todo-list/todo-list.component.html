@@ -1,0 +1,36 @@
+<div *ngIf="todoList" class="row justify-content-md-center mb-4">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+        <div class="card" [ngStyle]="{'border-color': todoList.color}">
+            <div class="card-header text-center">
+                <button type="button" class="btn btn-outline-danger float-right" (click)="deleteList()">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <h3 [ngStyle]="{'color': todoList.color}" class="mb-0">{{todoList.title}}</h3>
+            </div>
+
+            <div class="card-body d-inline-flex">
+                <input class="form-control form-control-lg" type="text" placeholder="Add list item" (keyup.enter)="addTodo()" [(ngModel)]="newTodoContent" />
+                <!-- (click) passes input value to addTodo() and then clears the input -->
+                <button (click)="addTodo()" type="button" class="btn btn-success btn-lg ml-2">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action" *ngFor="let todo of todoList.todos" routerLink="/todo-lists/{{todoList.id}}/todos/{{todo.number}}">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input class="custom-control-input" [id]="'todoStatus-' + todo.number" type="checkbox" (click)="stop($event)" (ngModelChange)="onFilterChange($event, todo)"
+                                [(ngModel)]="todo.done">
+                            <label class="custom-control-label" [for]="'todoStatus-' + todo.number" (click)="stop($event)">{{todo.content}}</label>
+                        </div>
+
+                        <button type="button" class="btn btn-danger" (click)="delete(todo); false">
+                            <span class="fas fa-trash"></span>
+                        </button>
+                    </div>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<!--Only show the messages if an error occured-->
+<div *ngIf="messageService.messages.length" class="mb-3">
+    <div class="alert alert-danger" role="alert" *ngFor='let message of messageService.messages'>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="alert-heading">Request failed!</h4>
+        {{message}}
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-warning" (click)="messageService.clear()">Clear all warnings</button>
+    </div>
+</div>

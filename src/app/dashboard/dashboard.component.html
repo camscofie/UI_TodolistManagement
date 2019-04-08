@@ -1,0 +1,36 @@
+<h3 class="text-center mb-4">My Todo Lists</h3>
+
+<div class="row justify-content-md-center mb-4">
+    <div class="col-12 col-sm">
+        <input type="text" class="form-control form-control-lg" placeholder="Add a new todo list" [(ngModel)]="newListTitle" (keyup.enter)="addList()" />
+    </div>
+    <div class="col-12 col-sm-auto mt-2 mt-sm-0 d-sm-inline-flex">
+        <div class="dropdown mr-sm-2 mb-1 mb-sm-0">
+            <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" [ngStyle]="{'background-color': color, 'border-color': color}"
+                data-toggle="dropdown">
+                <i class="fas fa-palette fa-fw"></i> Color
+            </button>
+            <div class="dropdown-menu">
+                <!-- *ngFor iterates over all elements from a list-->
+                <!-- (click) calls the method setColor(color: String) defined in the *.component.ts-->
+                <button *ngFor="let color of colors" class="dropdown-item" (click)="setColor(color)">
+                    <button class="btn" [ngStyle]="{'background-color': color.code}"></button>
+                    <span class="ml-2">{{color.name}}</span>
+                </button>
+            </div>
+        </div>
+        <button (click)="addList()" type="button" class="btn btn-success btn-lg btn-block">
+            <i class="fas fa-plus"></i>
+            <span class="d-sm-none ml-2">Hinzufügen</span>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-2 mb-sm-4" *ngFor="let todoList of todoLists">
+        <button type="button" class="btn todo py-3" routerLink="/todo-lists/{{todoList.id}}"
+            [ngStyle]="{'background-color': todoList.color, 'border-color': todoList.color}">
+            {{todoList.title}}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<form>
+  <div class="form-group">
+    <label for="InputUsername">Username</label>
+    <input type="email" class="form-control" id="InputUsername" aria-describedby="userHelp" placeholder="Enter username" #username>
+    <small id="userHelp" class="form-text text-muted">Please enter your username.</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="submit(username.value)">Submit</button>
+</form>
